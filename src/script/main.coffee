@@ -7,7 +7,7 @@ GameplayState =
   preload: () ->
   load: () ->
   update: () ->
-  render: () -> game.debug.text('Hello, world!', 16, 16);
+  render: () -> game.debug.text('Hello, game!', 16, 16);
 
 
 main = () ->

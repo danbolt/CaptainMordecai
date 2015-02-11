@@ -25,6 +25,7 @@ var htmlDst = './build/';
 var styleSrc = './src/scss/*.scss';
 var styleDst = './build/css';
 
+// Build our CoffeeScript files
 gulp.task('coffee', function()
 {
   gulp.src(coffeeSrc)
@@ -32,25 +33,29 @@ gulp.task('coffee', function()
     .pipe(gulp.dest(coffeeDst));
 });
 
+// Copy JavaScript libraries
 gulp.task('lib', function()
 {
   gulp.src(libSrc)
   .pipe(gulp.dest(libDst));
 });
 
+// Copy image files
 gulp.task('img', function()
 {
   gulp.src(imgSrc)
   .pipe(gulp.dest(imgDst));
 });
 
-gulp.task('htmlpage', function()
+// Copy html files
+gulp.task('html', function()
 {
   gulp.src(htmlSrc)
   .pipe(minifyHTML())
   .pipe(gulp.dest(htmlDst));
 });
 
+// Build stylesheet files
 gulp.task('style', function()
 {
   gulp.src(styleSrc)
@@ -58,4 +63,18 @@ gulp.task('style', function()
   .pipe(gulp.dest(styleDst));
 });
 
-gulp.task('default', ['coffee', 'lib', 'img', 'htmlpage', 'style'], function() {});
+// Default task (this is run when you type 'gulp' in the root directory)
+gulp.task('default', ['coffee', 'lib', 'img', 'html', 'style'], function()
+{
+  // watch for changes in CoffeeScript files
+  gulp.watch(coffeeSrc, ['coffee']);
+
+  // watch for changes in image files
+  gulp.watch(imgSrc, ['img']);
+
+  // watch for changes in html files
+  gulp.watch(htmlSrc, ['html']);
+
+  // watch for changes in stylesheets
+  gulp.watch(styleSrc, ['style']);
+});
