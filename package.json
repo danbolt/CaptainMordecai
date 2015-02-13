@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A weekend-long game jam with Daniel and Connor!",
   "scripts": {
+    "start": "gulp --require coffee-script/register",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
