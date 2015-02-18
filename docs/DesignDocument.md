@@ -12,4 +12,4 @@ Each blue square in this diagram represents a "game screen" that the player sees
 
 Each game screen can be considered a *game state*, which Phaser provides logic for. A game state may have substates.
 
-![Breakout-Style Game Flow](img/game_flow_diagram.svg)
+![Breakout-Style Game Flow](img/game_flow_diagram.png)
