@@ -7,13 +7,14 @@
 gulp = require('gulp')
 gutil = require('gulp-util')
 coffee = require('gulp-coffee')
+concat = require('gulp-concat')
 sass = require('gulp-sass')
 changed = require('gulp-changed')
 imagemin = require('gulp-imagemin')
 minifyHTML = require('gulp-minify-html')
 
 ### Source and build destination directories for files. ###
-coffeeSrc = './src/script/*.coffee'
+coffeeSrc = ['./src/script/*State.coffee', './src/script/main.coffee', './src/script/*.coffee']
 coffeeDst = './build/script'
 libSrc = './src/lib/*.js'
 libDst = './build/lib'
@@ -26,7 +27,7 @@ styleDst = './build/css'
 
 # Build our CoffeeScript files
 gulp.task 'coffee', ->
-  gulp.src(coffeeSrc).pipe(coffee(bare: true).on('error', gutil.log)).pipe gulp.dest(coffeeDst)
+  gulp.src(coffeeSrc).pipe(concat('main.coffee')).pipe(coffee(bare: true).on('error', gutil.log)).pipe gulp.dest(coffeeDst)
   return
 
 # Copy JavaScript libraries
