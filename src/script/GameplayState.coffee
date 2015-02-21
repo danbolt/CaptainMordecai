@@ -5,6 +5,9 @@
 @ball = null
 @boxes = null
 
+score = 0
+lives = 3
+
 GameplayState =
   preload: () ->
 
@@ -38,12 +41,12 @@ GameplayState =
     @wallRight.body.setSize(20, 960)
     @wallRight.body.immovable = true
 
-    @ball = new Phaser.Sprite(game, 480, 420, null)
+    @ball = new Phaser.Sprite(game, 320, 880, null)
     game.add.existing(@ball)
     game.physics.enable(@ball, Phaser.Physics.ARCADE)
     @ball.body.setSize(10, 10)
-    @ball.body.velocity.x = 200
-    @ball.body.velocity.y = 200
+    @ball.body.velocity.x = -200
+    @ball.body.velocity.y = -200
 
     @boxes = new Phaser.Group(game, undefined, 'boxes')
     for i in [0..7] by 1
@@ -64,12 +67,24 @@ GameplayState =
     game.physics.arcade.overlap(@ball, @wallRight, @collideX)
     game.physics.arcade.collide(@ball, @boxes, @collideBlock)
 
+    if @ball.body.position.y > 1100
+      lives--
+      @ball.body.position.y = 880
+      @ball.body.position.x = 320
+      @ball.body.velocity.y *= -1
+
+      if lives is 0
+        @ball.body.velocity.y *= 0
+        @ball.body.velocity.x *= 0
+
   render: () ->
     game.debug.body(@square)
     game.debug.body(@wallTop)
     game.debug.body(@wallLeft)
     game.debug.body(@wallRight)
     game.debug.body(@ball)
+    game.debug.text(score, 80, 100)
+    game.debug.text(lives, 520, 100)
 
     @boxes.forEachAlive((box) -> game.debug.body(box))
 
@@ -81,6 +96,7 @@ GameplayState =
 
   collideBlock: (ball, block) ->
     block.kill()
+    score += 100
 
     if ball.body.touching.up or ball.body.touching.down
       ball.body.velocity.y *= -2
