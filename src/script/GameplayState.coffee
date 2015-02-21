@@ -21,6 +21,11 @@ GameplayState =
     game.add.sprite(0, 0, 'background')
     game.add.sprite(0, 912, 'water')
 
+    @scoreText = new Phaser.Text(game, 16, 16, "SCORE: " + score, {font: "24px Karla", fill: 'grey'})
+    game.add.existing(@scoreText)
+    @livesText = new Phaser.Text(game, GameResolution.width - 100, 16, "LIVES: " + lives, {font: "24px Karla", fill: 'grey'})
+    game.add.existing(@livesText)
+
     @square = new Phaser.Sprite(game, 100, 864, 'paddle')
     game.add.existing(@square)
     game.physics.enable(@square, Phaser.Physics.ARCADE)
@@ -74,13 +79,14 @@ GameplayState =
     game.physics.arcade.overlap(@ball, @wallTop, @collideY)
     game.physics.arcade.overlap(@ball, @wallLeft, @collideX)
     game.physics.arcade.overlap(@ball, @wallRight, @collideX)
-    game.physics.arcade.collide(@ball, @boxes, @collideBlock)
+    game.physics.arcade.collide(@ball, @boxes, @collideBlock, null, @)
 
     # If the ball falls below the level, lose a life!
     # If the player runs out of lives, take her back
     # to the title screen.
     if @ball.body.position.y > 1100
       lives--
+      @livesText.text = "LIVES: " + lives
       @ball.body.position.y = 780
       @ball.body.position.x = 320
       @ball.body.velocity.y = -400
@@ -105,8 +111,6 @@ GameplayState =
     # game.debug.body(@wallLeft)
     # game.debug.body(@wallRight)
     # game.debug.body(@ball)
-    game.debug.text(score, 80, 100)
-    game.debug.text(lives, 520, 100)
 
     # @boxes.forEachAlive((box) -> game.debug.body(box, box.color))
 
@@ -119,3 +123,4 @@ GameplayState =
   collideBlock: (ball, block) ->
     block.kill()
     score += 100
+    @scoreText.text = "SCORE: " + score
