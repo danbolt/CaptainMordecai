@@ -21,7 +21,7 @@ GameplayState =
     @square = new Phaser.Sprite(game, 100, 864, null)
     game.add.existing(@square)
     game.physics.enable(@square, Phaser.Physics.ARCADE)
-    @square.body.setSize(96, 32)
+    @square.body.setSize(128, 32)
     @square.body.immovable = true
 
     @wallTop = new Phaser.Sprite(game, 32, 0, null)
@@ -42,9 +42,11 @@ GameplayState =
     @wallRight.body.setSize(32, 960)
     @wallRight.body.immovable = true
 
-    @ball = new Phaser.Sprite(game, 320, 880, null)
+    @ball = new Phaser.Sprite(game, 320, 780, null)
     game.add.existing(@ball)
     game.physics.enable(@ball, Phaser.Physics.ARCADE)
+    @ball.body.bounce.x = 1
+    @ball.body.bounce.y = 1
     @ball.body.setSize(16, 16)
     @ball.body.velocity.x = 0
     @ball.body.velocity.y = -400
@@ -56,6 +58,7 @@ GameplayState =
           box = @boxes.add(new Phaser.Sprite(game, 64 + (i * 32), 96 + (j * 32), null))
           game.physics.enable(box, Phaser.Physics.ARCADE)
           box.body.setSize(32, 32)
+          box.body.immovable = true
           box.color = Levels[currentLevel][j][i].color
     game.add.existing(@boxes)
 
@@ -72,9 +75,10 @@ GameplayState =
 
     if @ball.body.position.y > 1100
       lives--
-      @ball.body.position.y = 880
+      @ball.body.position.y = 780
       @ball.body.position.x = 320
-      # @ball.body.velocity.y *= -1
+      @ball.body.velocity.y = -400
+      @ball.body.velocity.x = 0
 
       if lives <= 0
         @ball.body.velocity.y *= 0
@@ -102,9 +106,3 @@ GameplayState =
   collideBlock: (ball, block) ->
     block.kill()
     score += 100
-
-    if ball.body.touching.up or ball.body.touching.down
-      ball.body.velocity.y *= -2
-
-    if ball.body.touching.left or ball.body.touching.right
-      ball.body.velocity.x *= -2
