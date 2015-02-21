@@ -24,6 +24,7 @@ LoadingState =
     game.load.image('water', 'img/water.png')
     game.load.spritesheet('big_button', 'img/big_button.png', 32 * 12, 32 * 4)
     game.load.spritesheet('small_button', 'img/small_button.png', 32 * 8, 2*64)
+    game.load.spritesheet('splash', 'img/splash2.png', 48, 48)
 
   load: () ->
 
