@@ -3,6 +3,7 @@
 @wallLeft = null
 @wallRight = null
 @ball = null
+@boxes = null
 
 GameplayState =
   preload: () ->
@@ -44,6 +45,14 @@ GameplayState =
     @ball.body.velocity.x = 200
     @ball.body.velocity.y = 200
 
+    @boxes = new Phaser.Group(game, undefined, 'boxes')
+    for i in [0..7] by 1
+      for j in [0..5] by 1
+        box = @boxes.add(new Phaser.Sprite(game, 80 + (i * 60), 50 + (j * 60), null))
+        game.physics.enable(box, Phaser.Physics.ARCADE)
+        box.body.setSize(30, 30)
+
+
   update: () ->
     @square.body.position.x = Math.max(Math.min(game.input.activePointer.x, 540), 20)
 
@@ -58,6 +67,8 @@ GameplayState =
     game.debug.body(@wallLeft)
     game.debug.body(@wallRight)
     game.debug.body(@ball)
+
+    @boxes.forEach((box) -> game.debug.body(box))
 
   collideX: (ball, object) ->
     ball.body.velocity.x *= -1
