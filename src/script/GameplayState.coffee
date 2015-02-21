@@ -7,6 +7,7 @@
 
 score = 0
 lives = 3
+currentLevel = 1
 
 GameplayState =
   preload: () ->
@@ -50,10 +51,11 @@ GameplayState =
 
     @boxes = new Phaser.Group(game, undefined, 'boxes')
     for i in [0..7] by 1
-      for j in [0..5] by 1
-        box = @boxes.add(new Phaser.Sprite(game, 80 + (i * 60), 50 + (j * 60), null))
-        game.physics.enable(box, Phaser.Physics.ARCADE)
-        box.body.setSize(30, 30)
+      for j in [0..4] by 1
+        if Levels[currentLevel][j][i]
+          box = @boxes.add(new Phaser.Sprite(game, 80 + (i * 60), 50 + (j * 60), null))
+          game.physics.enable(box, Phaser.Physics.ARCADE)
+          box.body.setSize(30, 30)
     game.add.existing(@boxes)
 
   update: () ->
