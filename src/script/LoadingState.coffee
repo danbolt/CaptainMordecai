@@ -15,6 +15,8 @@ LoadingState =
     this.resizeGame()
 
   preload: () ->
+    game.load.spritesheet('big_button', 'img/big_button.png', 32 * 12, 32 * 4)
+    game.load.spritesheet('small_button', 'img/small_button.png', 32 * 8, 2*64)
   load: () ->
   create: () ->
     this.setScaling()
