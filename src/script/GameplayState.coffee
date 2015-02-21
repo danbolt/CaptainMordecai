@@ -38,7 +38,7 @@ GameplayState =
     @wallRight.body.setSize(20, 960)
     @wallRight.body.immovable = true
 
-    @ball = new Phaser.Sprite(game, 480, 320, null)
+    @ball = new Phaser.Sprite(game, 480, 420, null)
     game.add.existing(@ball)
     game.physics.enable(@ball, Phaser.Physics.ARCADE)
     @ball.body.setSize(10, 10)
@@ -51,7 +51,7 @@ GameplayState =
         box = @boxes.add(new Phaser.Sprite(game, 80 + (i * 60), 50 + (j * 60), null))
         game.physics.enable(box, Phaser.Physics.ARCADE)
         box.body.setSize(30, 30)
-
+    game.add.existing(@boxes)
 
   update: () ->
     @square.body.position.x = Math.max(Math.min(game.input.activePointer.x, 540), 20)
@@ -60,6 +60,7 @@ GameplayState =
     game.physics.arcade.overlap(@ball, @wallTop, @collideY)
     game.physics.arcade.overlap(@ball, @wallLeft, @collideX)
     game.physics.arcade.overlap(@ball, @wallRight, @collideX)
+    game.physics.arcade.overlap(@ball, @boxes, @collideBlock)
 
   render: () ->
     game.debug.body(@square)
@@ -68,10 +69,13 @@ GameplayState =
     game.debug.body(@wallRight)
     game.debug.body(@ball)
 
-    @boxes.forEach((box) -> game.debug.body(box))
+    @boxes.forEachAlive((box) -> game.debug.body(box))
 
   collideX: (ball, object) ->
     ball.body.velocity.x *= -1
 
   collideY: (ball, object) ->
     ball.body.velocity.y *= -1
+
+  collideBlock: (ball, block) ->
+    block.kill()
