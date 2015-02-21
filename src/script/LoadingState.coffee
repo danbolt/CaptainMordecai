@@ -18,5 +18,5 @@ LoadingState =
   load: () ->
   create: () ->
     this.setScaling()
-    game.state.start('Gameplay')
+    game.state.start('TitleScreen')
   update: () ->
