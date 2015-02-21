@@ -62,7 +62,7 @@ GameplayState =
     game.physics.arcade.overlap(@ball, @wallTop, @collideY)
     game.physics.arcade.overlap(@ball, @wallLeft, @collideX)
     game.physics.arcade.overlap(@ball, @wallRight, @collideX)
-    game.physics.arcade.overlap(@ball, @boxes, @collideBlock)
+    game.physics.arcade.collide(@ball, @boxes, @collideBlock)
 
   render: () ->
     game.debug.body(@square)
@@ -81,3 +81,9 @@ GameplayState =
 
   collideBlock: (ball, block) ->
     block.kill()
+
+    if ball.body.touching.up or ball.body.touching.down
+      ball.body.velocity.y *= -2
+
+    if ball.body.touching.left or ball.body.touching.right
+      ball.body.velocity.x *= -2
