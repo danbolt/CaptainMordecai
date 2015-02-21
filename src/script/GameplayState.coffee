@@ -67,7 +67,7 @@ GameplayState =
           game.physics.enable(box, Phaser.Physics.ARCADE)
           box.body.setSize(32, 32)
           box.body.immovable = true
-          box.color = Levels[currentLevel][j][i].color
+          if Levels[currentLevel][j][i].color then box.tint = Levels[currentLevel][j][i].color
     game.add.existing(@boxes)
 
   update: () ->
