@@ -79,8 +79,12 @@ GameplayState =
     # If the ball falls below the level, lose a life!
     # If the player runs out of lives, take her back
     # to the title screen.
-    if @ball.body.position.y > 1100
+    if @ball.body.position.y > 940
       lives--
+      @splash = new Phaser.Sprite(game, @ball.body.position.x, 896, 'splash')
+      @splash.animations.add('splash', null, 24)
+      @splash.animations.play('splash')
+      game.add.existing(@splash)
       @ball.body.position.y = 780
       @ball.body.position.x = 320
       @ball.body.velocity.y = -400
