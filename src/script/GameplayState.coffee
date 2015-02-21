@@ -18,31 +18,34 @@ GameplayState =
     game.physics.startSystem(Phaser.Physics.ARCADE)
     game.input.maxPointers = 1
 
-    @square = new Phaser.Sprite(game, 100, 864, null)
+    game.add.sprite(0, 0, 'background')
+    game.add.sprite(0, 912, 'water')
+
+    @square = new Phaser.Sprite(game, 100, 864, 'paddle')
     game.add.existing(@square)
     game.physics.enable(@square, Phaser.Physics.ARCADE)
-    @square.body.setSize(128, 32)
+    @square.body.setSize(120, 32, 0, 37)
     @square.body.immovable = true
 
-    @wallTop = new Phaser.Sprite(game, 32, 0, null)
+    @wallTop = new Phaser.Sprite(game, 0, 0, null)
     game.add.existing(@wallTop)
     game.physics.enable(@wallTop, Phaser.Physics.ARCADE)
-    @wallTop.body.setSize(576, 32)
+    @wallTop.body.setSize(640, 0)
     @wallTop.body.immovable = true
 
     @wallLeft = new Phaser.Sprite(game, 0, 0, null)
     game.add.existing(@wallLeft)
     game.physics.enable(@wallLeft, Phaser.Physics.ARCADE)
-    @wallLeft.body.setSize(32, 960)
+    @wallLeft.body.setSize(0, 960)
     @wallLeft.body.immovable = true
 
-    @wallRight = new Phaser.Sprite(game, 608, 0, null)
+    @wallRight = new Phaser.Sprite(game, 640, 0, null)
     game.add.existing(@wallRight)
     game.physics.enable(@wallRight, Phaser.Physics.ARCADE)
-    @wallRight.body.setSize(32, 960)
+    @wallRight.body.setSize(0, 960)
     @wallRight.body.immovable = true
 
-    @ball = new Phaser.Sprite(game, 320, 780, null)
+    @ball = new Phaser.Sprite(game, 320, 780, 'ball')
     game.add.existing(@ball)
     game.physics.enable(@ball, Phaser.Physics.ARCADE)
     @ball.body.bounce.x = 1
@@ -55,7 +58,7 @@ GameplayState =
     for i in [0..15] by 1
       for j in [0..6] by 1
         if Levels[currentLevel][j][i]
-          box = @boxes.add(new Phaser.Sprite(game, 64 + (i * 32), 96 + (j * 32), null))
+          box = @boxes.add(new Phaser.Sprite(game, 64 + (i * 32), 96 + (j * 32), 'block'))
           game.physics.enable(box, Phaser.Physics.ARCADE)
           box.body.setSize(32, 32)
           box.body.immovable = true
@@ -87,15 +90,15 @@ GameplayState =
         game.state.start("TitleScreen")
 
   render: () ->
-    game.debug.body(@square)
-    game.debug.body(@wallTop)
-    game.debug.body(@wallLeft)
-    game.debug.body(@wallRight)
-    game.debug.body(@ball)
+    # game.debug.body(@square)
+    # game.debug.body(@wallTop)
+    # game.debug.body(@wallLeft)
+    # game.debug.body(@wallRight)
+    # game.debug.body(@ball)
     game.debug.text(score, 80, 100)
     game.debug.text(lives, 520, 100)
 
-    @boxes.forEachAlive((box) -> game.debug.body(box, box.color))
+    # @boxes.forEachAlive((box) -> game.debug.body(box, box.color))
 
   collideX: (ball, object) ->
     ball.body.velocity.x *= -1
