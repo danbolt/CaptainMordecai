@@ -73,6 +73,9 @@ GameplayState =
     game.physics.arcade.overlap(@ball, @wallRight, @collideX)
     game.physics.arcade.collide(@ball, @boxes, @collideBlock)
 
+    # If the ball falls below the level, lose a life!
+    # If the player runs out of lives, take her back
+    # to the title screen.
     if @ball.body.position.y > 1100
       lives--
       @ball.body.position.y = 780
@@ -85,6 +88,13 @@ GameplayState =
         @ball.body.velocity.x *= 0
 
         game.state.start("TitleScreen")
+
+    # If the player finishes all the blocks,
+    # start the next level for him.
+    if @boxes.countLiving() <= 0
+      currentLevel++
+      game.state.start('Gameplay')
+
 
   render: () ->
     game.debug.body(@square)
