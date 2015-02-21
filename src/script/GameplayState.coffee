@@ -71,11 +71,13 @@ GameplayState =
       lives--
       @ball.body.position.y = 880
       @ball.body.position.x = 320
-      @ball.body.velocity.y *= -1
+      # @ball.body.velocity.y *= -1
 
       if lives is 0
         @ball.body.velocity.y *= 0
         @ball.body.velocity.x *= 0
+
+        game.state.start("TitleScreen")
 
   render: () ->
     game.debug.body(@square)
