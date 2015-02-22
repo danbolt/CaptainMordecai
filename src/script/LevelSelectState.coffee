@@ -3,7 +3,7 @@ LevelSelectState =
   load: () ->
   create: () ->
     game.add.sprite(0, 0, 'background')
-    #game.add.sprite(0, 912, 'water')
+    game.add.sprite(0, waterHeight, 'water')
 
     @backButton = new Phaser.Button(game, GameResolution.width - 32 * 9, GameResolution.height - 6*32, 'small_button', @backButtonPress, @, 0, 0, 1, 0)
     @backButton.tint = 0xFF5555
