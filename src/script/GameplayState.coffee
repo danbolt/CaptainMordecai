@@ -83,8 +83,8 @@ GameplayState =
     @square.body.position.x = Math.max(Math.min(game.input.activePointer.x - @square.body.width / 2, @wallRight.body.position.x - @square.body.width), @wallLeft.body.position.x + @wallLeft.body.width)
 
     game.physics.arcade.overlap(@ball, @square, (ball, paddle) ->
-      ball.body.velocity.x = 400 * Math.cos(Math.PI + (Math.PI * (ball.body.center.x - paddle.body.position.x) / paddle.body.width))
-      ball.body.velocity.y = 400 * Math.sin(Math.PI + (Math.PI * (ball.body.center.x - paddle.body.position.x) / paddle.body.width)))
+      ball.body.velocity.x = 400 * Math.cos(Math.PI + (Math.PI / 4) + ((Math.PI / 2) * (ball.body.center.x - paddle.body.position.x) / paddle.body.width))
+      ball.body.velocity.y = 400 * Math.sin(Math.PI + (Math.PI / 4) + ((Math.PI / 2) * (ball.body.center.x - paddle.body.position.x) / paddle.body.width)))
     game.physics.arcade.overlap(@ball, @wallTop, @collideY)
     game.physics.arcade.overlap(@ball, @wallLeft, @collideX)
     game.physics.arcade.overlap(@ball, @wallRight, @collideX)
