@@ -7,6 +7,7 @@ game = null
 
 main = () ->
   game = new Phaser.Game(GameResolution.width, GameResolution.height, Phaser.AUTO, 'gameWindow')
+  game.state.add('LevelSelect', LevelSelectState, false)
   game.state.add('Gameplay', GameplayState, false)
   game.state.add('TitleScreen', TitleScreenState, false)
   game.state.add('Loading', LoadingState, true)
