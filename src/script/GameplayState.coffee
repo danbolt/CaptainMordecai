@@ -37,7 +37,8 @@ GameplayState =
     @square.body.setSize(120, 32, 0, 37)
     @square.body.immovable = true
 
-    @speechBubble = new Phaser.Sprite(game, 0, 720, 'speechBubble')
+    @speechBubble = new Phaser.Sprite(game, 0, @square.position.y, 'speechBubble')
+    @speechBubble.y -= @speechBubble.height;
     game.physics.enable(@speechBubble, Phaser.Physics.ARCADE)
     @speechBubble.body.setSize(0, 960)
 
