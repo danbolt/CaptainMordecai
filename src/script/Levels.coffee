@@ -33,15 +33,15 @@ Levels[3] = [
   [{}, {}, {}, {}, {}, {}, {}, {color: 0xFF5555}, {color: 0xFF5555}, {}, {}, {}, {}, {}, {}, {}]
 ]
 
-# Pyramid
+# Diamond
 Levels[4] = [
-  [0 , 0 , 0 , 0 , 0 , 0 , {}, {}, {}, {}, 0 , 0 , 0 , 0 , 0 , 0 ],
-  [0 , 0 , 0 , 0 , 0 , {}, {}, {}, {}, {}, {}, 0 , 0 , 0 , 0 , 0 ],
-  [0 , 0 , 0 , 0 , {}, {}, {}, {}, {}, {}, {}, {}, 0 , 0 , 0 , 0 ],
-  [0 , 0 , 0 , {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, 0 , 0 , 0 ],
-  [0 , 0 , {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, 0 , 0 ],
-  [0 , {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, 0 ],
-  [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}]
+  [0 , 0 , 0 , 0 , 0 , 0 , 0 , {color: 0x6AC6E1}, {color: 0x6AC6E1}, 0 , 0 , 0 , 0 , 0 , 0 , 0 ],
+  [0 , 0 , 0 , 0 , 0 , 0 , {color: 0x6AC6E1}, {color: 0x84CEE6}, {color: 0x6AC6E1}, {color: 0x6AC6E1}, 0 , 0 , 0 , 0 , 0 , 0 ],
+  [0 , 0 , 0 , 0 , 0 , {color: 0x6AC6E1}, {color: 0x84CEE6}, {color: 0x84CEE6}, {color: 0x6AC6E1}, {color: 0x6AC6E1}, {color: 0x51ADCD}, 0 , 0 , 0 , 0 , 0 ],
+  [0 , 0 , 0 , 0 , {color: 0x6AC6E1}, {color: 0x6AC6E1}, {color: 0x6AC6E1}, {color: 0x6AC6E1}, {color: 0x6AC6E1}, {color: 0x6AC6E1}, {color: 0x51ADCD}, {color: 0x4CA1C0}, 0 , 0 , 0 , 0 ],
+  [0 , 0 , 0 , 0 , 0 , {color: 0x6AC6E1}, {color: 0x6AC6E1}, {color: 0x6AC6E1}, {color: 0x6AC6E1}, {color: 0x51ADCD}, {color: 0x4CA1C0}, 0 , 0 , 0 , 0 , 0 ],
+  [0 , 0 , 0 , 0 , 0 , 0 , {color: 0x6AC6E1}, {color: 0x6AC6E1}, {color: 0x51ADCD}, {color: 0x4CA1C0}, 0 , 0 , 0 , 0 , 0 , 0 ],
+  [0 , 0 , 0 , 0 , 0 , 0 , 0 , {color: 0x51ADCD}, {color: 0x4CA1C0}, 0 , 0 , 0 , 0 , 0 , 0 , 0 ]
 ]
 
 # Dudehead
@@ -64,6 +64,28 @@ Levels[6] = [
   [0 , 0 , {color: 0x00FF7B}, 0 , {color: 0x00FF7B}, {color: 0x00FF7B}, {color: 0x00FF7B}, {color: 0x00FF7B}, {color: 0x00FF7B}, {color: 0x00FF7B}, {color: 0x00FF7B}, {color: 0x00FF7B}, 0 , {color: 0x00FF7B}, 0 , 0 ],
   [0 , 0 , {color: 0x00FF7B}, 0 , {color: 0x00FF7B}, 0 , 0 , 0 , 0 , 0 , 0 , {color: 0x00FF7B}, 0 , {color: 0x00FF7B}, 0 , 0 ],
   [0 , 0 , 0 , 0 , 0 , {color: 0x00FF7B}, {color: 0x00FF7B}, 0 , 0 , {color: 0x00FF7B}, {color: 0x00FF7B}, 0 , 0 , 0 , 0 , 0 ]
+]
+
+# Cat
+Levels[7] = [
+  [0 , 0 , 0 , {color: 0x191E24}, 0 , 0 , 0 , 0 , {color: 0x191E24}, 0 , 0 , 0 , 0 , 0 ],
+  [0 , 0 , 0 , {color: 0x191E24}, {color: 0x191E24}, {color: 0x191E24}, {color: 0x191E24}, {color: 0x191E24}, {color: 0x191E24}, 0 , 0 ,{color: 0x191E24}, 0 , 0 , 0 , 0 ],
+  [0 , 0 , {color: 0x191E24}, {color: 0xECFB4E}, {color: 0x191E24}, {color: 0x191E24}, {color: 0x191E24}, {color: 0x191E24}, {color: 0xECFB4E}, {color: 0x191E24}, 0 , {color: 0x191E24}, 0 , 0 , 0 , 0 ],
+  [0 , 0 , 0 , {color: 0x191E24}, {color: 0x191E24}, {color: 0xF568B0}, {color: 0x191E24}, {color: 0x191E24}, {color: 0x191E24}, 0 , 0 , 0 , {color: 0x191E24}, 0 , 0 , 0 ],
+  [0 , 0 , 0 , 0 , {color: 0x191E24}, {color: 0x191E24}, {color: 0x191E24}, {color: 0x191E24}, {color: 0x191E24}, {color: 0x191E24}, {color: 0x191E24}, {color: 0x191E24}, 0 , 0 , 0 , 0 ],
+  [0 , 0 , 0 , 0 , 0 , 0 , {color: 0x191E24}, {color: 0x191E24}, {color: 0x191E24}, {color: 0x191E24}, {color: 0x191E24}, 0 , 0 , 0 , 0 , 0 ],
+  [0 , 0 , 0 , 0 , 0 , 0 , {color: 0x191E24}, 0 , {color: 0x191E24}, 0 , {color: 0x191E24}, 0 , 0 , 0 , 0 , 0 ]
+]
+
+# Template
+Levels[19] = [
+  [0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ],
+  [0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ],
+  [0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ],
+  [0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ],
+  [0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ],
+  [0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ],
+  [0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ]
 ]
 
 # Template
