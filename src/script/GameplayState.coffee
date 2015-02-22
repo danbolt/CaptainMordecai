@@ -10,7 +10,7 @@ score = 0
 lives = 3
 startingLives = 3
 currentLevel = 1
-furthestUnlockedLevel = 1
+furthestUnlockedLevel = 12
 
 GameplayState =
   preload: () ->
