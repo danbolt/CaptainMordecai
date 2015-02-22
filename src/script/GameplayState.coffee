@@ -11,6 +11,7 @@ lives = 3
 startingLives = 3
 currentLevel = 1
 furthestUnlockedLevel = 12
+rubyVelocity = 200
 
 GameplayState =
   preload: () ->
@@ -70,7 +71,27 @@ GameplayState =
     for i in [0..15] by 1
       for j in [0..6] by 1
         if Levels[currentLevel][j][i]
-          box = @boxes.add(new Phaser.Sprite(game, 64 + (i * 32), 96 + (j * 32), 'block'))
+
+          if Levels[currentLevel][j][i].grass
+            image = 'blockWithGrass'
+          else if Levels[currentLevel][j][i].treasure
+            image = 'treasure'
+          else
+            image = 'block'
+
+          box = @boxes.add(new Phaser.Sprite(game, 64 + (i * 32), 96 + (j * 32), image))
+
+          lottery = Math.floor(Math.random() * (20 - 1 + 1)) + 1
+          if lottery > 16
+            unless Levels[currentLevel][j][i].treasure
+              x = Math.floor(Math.random() * (15 - 5 + 1)) + 5
+              y = Math.floor(Math.random() * (15 - 5 + 1)) + 5
+              width = Math.floor(Math.random() * (20 - 5 + 1)) + 5
+              @divit = new Phaser.Sprite(game, x, y, 'divit')
+              box.addChild(@divit)
+              game.physics.enable(@divit, Phaser.Physics.ARCADE)
+              @divit.body.setSize(width, width, 0, 0)
+
           game.physics.enable(box, Phaser.Physics.ARCADE)
           box.body.setSize(32, 32)
           box.body.immovable = true
@@ -87,6 +108,7 @@ GameplayState =
     game.physics.arcade.overlap(@ball, @wallLeft, @collideX)
     game.physics.arcade.overlap(@ball, @wallRight, @collideX)
     game.physics.arcade.collide(@ball, @boxes, @collideBlock, null, @)
+    game.physics.arcade.collide(@square, @ruby, @collectRuby, null, @)
 
     if @speechBubble.visible
       @speechBubble.body.position.x = @square.body.position.x + 120
@@ -147,6 +169,18 @@ GameplayState =
     ball.body.velocity.y *= -1
 
   collideBlock: (ball, block) ->
+
+    if block.key is 'treasure'
+      @ruby = new Phaser.Sprite(game, block.body.position.x + 8, block.body.position.y + 11, 'ruby')
+      game.add.existing(@ruby)
+      game.physics.enable(@ruby, Phaser.Physics.ARCADE)
+      @ruby.body.velocity.y = rubyVelocity
+
     block.kill()
     score += 100
+    @scoreText.text = "SCORE: " + score
+
+  collectRuby: (square, ruby) ->
+    ruby.kill()
+    score += 1000
     @scoreText.text = "SCORE: " + score
