@@ -1,5 +1,3 @@
-furthestUnlockedLevel = 1
-
 LevelSelectState =
   preload: () ->
   load: () ->
