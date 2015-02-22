@@ -88,6 +88,17 @@ Levels[8] = [
   [0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ]
 ]
 
+# Pokéball
+Levels[9] = [
+  [0 , 0 , 0, 0 , 0 , 0 , {color: 0xFC3F3F}, {color: 0xFC3F3F}, {color: 0xFC3F3F}, {color: 0xFC3F3F}, 0 , 0 , 0 , 0 , 0 , 0 ],
+  [0 , 0 , 0, 0 , {color: 0xFC3F3F}, {color: 0xFC3F3F}, {color: 0xFC3F3F}, {color: 0xFC3F3F}, {color: 0xFC3F3F}, {color: 0xFC3F3F}, {color: 0xFC3F3F}, {color: 0xFC3F3F}, 0 , 0 , 0 , 0],
+  [0 , 0 , 0, {color: 0xFC3F3F}, {color: 0xFC3F3F}, {color: 0xFC3F3F}, {color: 0xFC3F3F}, {color: 0xCFCFCF}, {color: 0xCFCFCF}, {color: 0xFC3F3F}, {color: 0xFC3F3F}, {color: 0xFC3F3F}, {color: 0xFC3F3F}, 0 , 0 , 0 , ],
+  [0 , 0 , 0, {color: 0xCFCFCF}, {color: 0xCFCFCF}, {color: 0xCFCFCF}, {color: 0xCFCFCF}, {color: 0xF0F0F0}, {color: 0xF0F0F0}, {color: 0xCFCFCF}, {color: 0xCFCFCF}, {color: 0xCFCFCF}, {color: 0xCFCFCF}, 0 , 0 , 0 , ],
+  [0 , 0 , 0, {}, {}, {}, {}, {color: 0xCFCFCF}, {color: 0xCFCFCF}, {}, {}, {}, {}, 0 , 0 , 0],
+  [0 , 0 , 0, 0 , {}, {}, {}, {}, {}, {}, {}, {}, 0 , 0 , 0 , 0],
+  [0 , 0 , 0, 0 , 0 , 0 , {}, {}, {}, {}, 0 , 0 , 0 , 0 , 0 , 0]
+]
+
 # Template
 Levels[19] = [
   [0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ],
