@@ -4,6 +4,7 @@
 @wallRight = null
 @ball = null
 @boxes = null
+@speechBubble = null
 
 score = 0
 lives = 3
@@ -31,6 +32,10 @@ GameplayState =
     game.physics.enable(@square, Phaser.Physics.ARCADE)
     @square.body.setSize(120, 32, 0, 37)
     @square.body.immovable = true
+
+    @speechBubble = new Phaser.Sprite(game, 0, 720, 'speechBubble')
+    game.physics.enable(@speechBubble, Phaser.Physics.ARCADE)
+    @speechBubble.body.setSize(0, 960)
 
     @wallTop = new Phaser.Sprite(game, 0, 0, null)
     game.add.existing(@wallTop)
@@ -81,16 +86,30 @@ GameplayState =
     game.physics.arcade.overlap(@ball, @wallRight, @collideX)
     game.physics.arcade.collide(@ball, @boxes, @collideBlock, null, @)
 
+    if @speechBubble.visible
+      @speechBubble.body.position.x = @square.body.position.x + 120
+    else
+      @speechBubble.body.position.x = -1000
+
     # If the ball falls below the level, lose a life!
     # If the player runs out of lives, take her back
     # to the title screen.
-    if @ball.body.position.y > 940
+    if @ball.body.position.y > 925
       lives--
       @livesText.text = "LIVES: " + lives
-      @splash = new Phaser.Sprite(game, @ball.body.position.x, 896, 'splash')
+      @splash = new Phaser.Sprite(game, @ball.body.position.x - 16, 896, 'splash')
       @splash.animations.add('splash', null, 24)
       @splash.animations.play('splash')
       game.add.existing(@splash)
+
+      game.add.existing(@speechBubble)
+      @speechBubble.visible = true
+
+      setTimeout =>
+        @speechBubble.visible = false
+        @speechBubble.body.position.x = -1000
+      , 1000
+
       @ball.body.position.y = 780
       @ball.body.position.x = 320
       @ball.body.velocity.y = -400
