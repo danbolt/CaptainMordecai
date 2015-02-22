@@ -12,6 +12,8 @@ startingLives = 3
 currentLevel = 1
 furthestUnlockedLevel = 12
 
+waterHeight = 748
+
 GameplayState =
   preload: () ->
 
@@ -22,14 +24,14 @@ GameplayState =
     game.input.maxPointers = 1
 
     game.add.sprite(0, 0, 'background')
-    game.add.sprite(0, 912, 'water')
+    game.add.sprite(0, waterHeight, 'water')
 
     @scoreText = new Phaser.Text(game, 16, 16, "SCORE: " + score, {font: "24px Karla", fill: 'grey'})
     game.add.existing(@scoreText)
     @livesText = new Phaser.Text(game, GameResolution.width - 100, 16, "LIVES: " + lives, {font: "24px Karla", fill: 'grey'})
     game.add.existing(@livesText)
 
-    @square = new Phaser.Sprite(game, 100, 864, 'paddle')
+    @square = new Phaser.Sprite(game, 100, waterHeight - 48, 'paddle')
     game.add.existing(@square)
     game.physics.enable(@square, Phaser.Physics.ARCADE)
     @square.body.setSize(120, 32, 0, 37)
@@ -57,7 +59,7 @@ GameplayState =
     @wallRight.body.setSize(0, 960)
     @wallRight.body.immovable = true
 
-    @ball = new Phaser.Sprite(game, 320, 780, 'ball')
+    @ball = new Phaser.Sprite(game, 320, waterHeight - 64, 'ball')
     game.add.existing(@ball)
     game.physics.enable(@ball, Phaser.Physics.ARCADE)
     @ball.body.bounce.x = 1
@@ -96,10 +98,10 @@ GameplayState =
     # If the ball falls below the level, lose a life!
     # If the player runs out of lives, take her back
     # to the title screen.
-    if @ball.body.position.y > 925
+    if @ball.body.position.y > waterHeight + 13
       lives--
       @livesText.text = "LIVES: " + lives
-      @splash = new Phaser.Sprite(game, @ball.body.position.x - 16, 896, 'splash')
+      @splash = new Phaser.Sprite(game, @ball.body.position.x - 16, waterHeight - 12, 'splash')
       @splash.animations.add('splash', null, 24)
       @splash.animations.play('splash')
       game.add.existing(@splash)
@@ -112,7 +114,7 @@ GameplayState =
         @speechBubble.body.position.x = -1000
       , 1000
 
-      @ball.body.position.y = 780
+      @ball.body.position.y = waterHeight - 64
       @ball.body.position.x = 320
       @ball.body.velocity.y = -400
       @ball.body.velocity.x = 0

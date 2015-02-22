@@ -3,7 +3,7 @@ TitleScreenState =
   load: () ->
   create: () ->
     game.add.sprite(0, 0, 'background')
-    game.add.sprite(0, 912, 'water')
+    game.add.sprite(0, waterHeight, 'water')
 
     @startButton = new Phaser.Button(game, 128, 416, 'big_button', @onStartPress, @, 0, 0, 1, 0)
     @startButton.tint = 0xFF5555
