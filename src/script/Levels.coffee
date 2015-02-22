@@ -66,6 +66,17 @@ Levels[6] = [
   [0 , 0 , 0 , 0 , 0 , {color: 0x00FF7B}, {color: 0x00FF7B}, 0 , 0 , {color: 0x00FF7B}, {color: 0x00FF7B}, 0 , 0 , 0 , 0 , 0 ]
 ]
 
+# Skateboard
+Levels[8] = [
+  [0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ],
+  [{color: 0xFF5555}, {color: 0xFF5555}, 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , {color: 0xFF5555}, {color: 0xFF5555}],
+  [0 , {color: 0xFF8282}, {color: 0xFF5555}, {color: 0xFF5555}, {color: 0xFF5555}, {color: 0xFF5555}, {color: 0xFF5555}, {color: 0xFF5555}, {color: 0xFF5555}, {color: 0xFF5555}, {color: 0xFF5555}, {color: 0xFF5555}, {color: 0xFF5555}, {color: 0xFF5555}, {color: 0xFF8282}, 0 ],
+  [0 , 0 , {color: 0xFF8282}, {color: 0x00E855}, {color: 0xFF8282}, {color: 0xFF8282}, {color: 0xFF8282}, {color: 0xFF8282}, {color: 0xFF8282}, {color: 0xFF8282}, {color: 0xFF8282}, {color: 0xFF8282}, {color: 0x00E855}, {color: 0xFF8282}, {color: 0xFF8282}, 0 ],
+  [0 , 0 , {color: 0x00E855}, {color: 0xA6A6A6}, {color: 0x00E855}, 0 , 0 , 0 , 0 , 0 , 0 , {color: 0x00E855}, {color: 0xA6A6A6}, {color: 0x00E855}, 0, 0 ],
+  [0 , 0 , 0 ,{color: 0x00E855}, 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , {color: 0x00E855}, 0 , 0 , 0 ],
+  [0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ]
+]
+
 # Template
 Levels[20] = [
   [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
