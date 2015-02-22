@@ -28,6 +28,7 @@ LoadingState =
     game.load.spritesheet('small_button', 'img/small_button.png', 32 * 8, 2*64)
     game.load.spritesheet('triangular_button', 'img/triangular_button.png', 128, 128)
     game.load.spritesheet('splash', 'img/splash2.png', 48, 48)
+    game.load.spritesheet('fish', 'img/fish.png', 32, 16)
 
     game.load.image('blockWithGrass', 'img/blockGrassy.png')
     game.load.image('treasure', 'img/treasure.png')
