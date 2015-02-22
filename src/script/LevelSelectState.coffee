@@ -1,3 +1,5 @@
+furthestUnlockedLevel = 1
+
 LevelSelectState =
   preload: () ->
   load: () ->
@@ -18,17 +20,19 @@ LevelSelectState =
       levelButton = new Phaser.Button(game, 16 + (208 * ((i-1) % 3)), 224 + 128 * Math.floor((i-1)/3), 'small_button', @levelButtonPress, @, 0, 0, 1, 0)
       levelButton.scale.x = levelButton.scale.y = 0.75
       levelButton.index = i
-      levelButton.tint = 0x5555DD
+      levelButton.tint = if i <= furthestUnlockedLevel then 0x5555DD else 0x333388
+      numberColor = if i <= furthestUnlockedLevel then 'white' else 'black'
       game.add.existing(levelButton)
-      buttonText = game.add.text(16 + (208 * ((i-1) % 3)) + (levelButton.width / 2), 224 + 128 * Math.floor((i-1)/3) + (levelButton.height / 2), i.toString(), { font: '48px Karla', fill: 'white', align: 'center'})
+      buttonText = game.add.text(16 + (208 * ((i-1) % 3)) + (levelButton.width / 2), 224 + 128 * Math.floor((i-1)/3) + (levelButton.height / 2), i.toString(), { font: '48px Karla', fill: numberColor, align: 'center'})
       buttonText.anchor.set(0.5)
   update: () ->
 
   render: () ->
 
   levelButtonPress: (button) ->
-    currentLevel = button.index
-    game.state.start('Gameplay')
+    if (furthestUnlockedLevel >= button.index)
+      currentLevel = button.index
+      game.state.start('Gameplay')
 
   backButtonPress: () ->
     game.state.start('TitleScreen')
