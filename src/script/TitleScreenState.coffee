@@ -33,7 +33,7 @@ TitleScreenState =
     lives = 3
 
   onLevelSelectPress: () ->
-    #
+    game.state.start('LevelSelect')
 
   onOptionsPress: () ->
     #
