@@ -9,6 +9,7 @@
 score = 0
 lives = 3
 currentLevel = 1
+furthestUnlockedLevel = 1
 
 GameplayState =
   preload: () ->
@@ -124,7 +125,8 @@ GameplayState =
     # If the player finishes all the blocks,
     # start the next level for him.
     if @boxes.countLiving() <= 0
-      currentLevel++
+      currentLevel = Math.max(Math.min(12, currentLevel + 1), 1)
+      furthestUnlockedLevel = currentLevel
       game.state.start('Gameplay')
 
 
