@@ -27,6 +27,15 @@ GameplayState =
     game.add.sprite(0, 0, 'background')
     @water = game.add.sprite(0, waterHeight, 'water')
 
+    birdYPosition = Math.floor(Math.random() * (waterHeight - 10 + 1)) + 10
+    @bird = new Phaser.Sprite(game,  -50, birdYPosition, 'bird')
+    @bird.animations.add('bird', null, 28, true)
+    @bird.animations.play('bird')
+    game.physics.enable(@bird, Phaser.Physics.ARCADE)
+    game.add.existing(@bird)
+    @bird.body.immovable = true
+    @bird.body.velocity.x = 150
+
     @scoreText = new Phaser.Text(game, 16, 16, "SCORE: " + score, {font: "24px Karla", fill: 'grey'})
     game.add.existing(@scoreText)
     @livesText = new Phaser.Text(game, GameResolution.width - 100, 16, "LIVES: " + lives, {font: "24px Karla", fill: 'grey'})
@@ -101,6 +110,8 @@ GameplayState =
           if Levels[currentLevel][j][i].color then box.tint = Levels[currentLevel][j][i].color
     game.add.existing(@boxes)
 
+    @bird.bringToTop()
+
     @waitingToStart = true
     @waitingToStartText = game.add.text(GameResolution.width / 2, GameResolution.height / 2, "TAP TO START", { font: '72px Karla', fill: 'white', align: 'center'})
     @waitingToStartText.anchor.set(0.5)
@@ -123,11 +134,16 @@ GameplayState =
     game.physics.arcade.overlap(@ball, @wallRight, @collideX)
     game.physics.arcade.collide(@ball, @boxes, @collideBlock, null, @)
     game.physics.arcade.collide(@square, @ruby, @collectRuby, null, @)
+    game.physics.arcade.collide(@ball, @bird, @killBird, null, @)
 
     if @speechBubble.visible
       @speechBubble.body.position.x = @square.body.position.x + 120
     else
       @speechBubble.body.position.x = -1000
+
+    if @bird.body.position.x > GameResolution.width
+      @bird.body.position.x = -1000
+      @bird.body.position.y = Math.floor(Math.random() * (waterHeight - 10 + 1)) + 10
 
     # If the ball falls below the level, lose a life!
     # If the player runs out of lives, take her back
@@ -200,3 +216,13 @@ GameplayState =
     ruby.kill()
     score += 1000
     @scoreText.text = "SCORE: " + score
+
+  killBird: (ball, bird) ->
+    bird.body.position.x = -1000
+    bird.body.position.y = Math.floor(Math.random() * (waterHeight - 10 + 1)) + 10
+    score += 2000
+    @scoreText.text = "SCORE: " + score
+    @birdExplosion = new Phaser.Sprite(game,  @bird.body.position.x, @bird.body.position.y, 'birdExplosion')
+    @birdExplosion.animations.add('birdExplosion', null, 24)
+    @birdExplosion.animations.play('birdExplosion')
+    game.add.existing(@birdExplosion)
