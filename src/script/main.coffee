@@ -10,4 +10,5 @@ main = () ->
   game.state.add('LevelSelect', LevelSelectState, false)
   game.state.add('Gameplay', GameplayState, false)
   game.state.add('TitleScreen', TitleScreenState, false)
+  game.state.add('Options', OptionsState, false)
   game.state.add('Loading', LoadingState, true)

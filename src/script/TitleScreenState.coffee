@@ -30,10 +30,10 @@ TitleScreenState =
   onStartPress: () ->
     game.state.start('Gameplay')
     score = 0
-    lives = 3
+    lives = startingLives
 
   onLevelSelectPress: () ->
     game.state.start('LevelSelect')
 
   onOptionsPress: () ->
-    #
+    game.state.start('Options')

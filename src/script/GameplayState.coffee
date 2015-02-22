@@ -8,6 +8,7 @@
 
 score = 0
 lives = 3
+startingLives = 3
 currentLevel = 1
 furthestUnlockedLevel = 1
 

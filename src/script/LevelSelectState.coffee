@@ -30,9 +30,9 @@ LevelSelectState =
   levelButtonPress: (button) ->
     if (furthestUnlockedLevel >= button.index)
       currentLevel = button.index
+      lives = startingLives
+      score = 0
       game.state.start('Gameplay')
 
   backButtonPress: () ->
     game.state.start('TitleScreen')
-    score = 0
-    lives = 3
