@@ -80,8 +80,19 @@ GameplayState =
           if Levels[currentLevel][j][i].color then box.tint = Levels[currentLevel][j][i].color
     game.add.existing(@boxes)
 
+    @waitingToStart = true
+    @waitingToStartText = game.add.text(GameResolution.width / 2, GameResolution.height / 2, "TAP TO START", { font: '72px Karla', fill: 'white', align: 'center'})
+    @waitingToStartText.anchor.set(0.5)
+
   update: () ->
     @square.body.position.x = Math.max(Math.min(game.input.activePointer.x - @square.body.width / 2, @wallRight.body.position.x - @square.body.width), @wallLeft.body.position.x + @wallLeft.body.width)
+
+    if (@waitingToStart)
+      @ball.body.position.x = @square.body.center.x
+      @ball.body.position.y = @square.body.position.y - 32
+      if (game.input.activePointer.justPressed(500))
+        @waitingToStart = false
+        @waitingToStartText.visible = false
 
     game.physics.arcade.overlap(@ball, @square, (ball, paddle) ->
       ball.body.velocity.x = 400 * Math.cos(Math.PI + (Math.PI / 4) + ((Math.PI / 2) * (ball.body.center.x - paddle.body.position.x) / paddle.body.width))
@@ -119,6 +130,8 @@ GameplayState =
       @ball.body.position.x = 320
       @ball.body.velocity.y = -400
       @ball.body.velocity.x = 0
+      @waitingToStart = true
+      @waitingToStartText.visible = true
 
       if lives <= 0
         @ball.body.velocity.y *= 0
