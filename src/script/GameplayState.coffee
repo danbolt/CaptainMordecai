@@ -24,7 +24,7 @@ GameplayState =
     game.input.maxPointers = 1
 
     game.add.sprite(0, 0, 'background')
-    game.add.sprite(0, waterHeight, 'water')
+    @water = game.add.sprite(0, waterHeight, 'water')
 
     @scoreText = new Phaser.Text(game, 16, 16, "SCORE: " + score, {font: "24px Karla", fill: 'grey'})
     game.add.existing(@scoreText)
@@ -113,7 +113,7 @@ GameplayState =
     if @ball.body.position.y > waterHeight + 13
       lives--
       @livesText.text = "LIVES: " + lives
-      @splash = new Phaser.Sprite(game, @ball.body.position.x - 16, waterHeight - 12, 'splash')
+      @splash = new Phaser.Sprite(game, @ball.body.position.x - 16, @water.y - 12, 'splash')
       @splash.animations.add('splash', null, 24)
       @splash.animations.play('splash')
       game.add.existing(@splash)
