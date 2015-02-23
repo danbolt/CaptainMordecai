@@ -35,6 +35,7 @@ LoadingState =
     game.load.image('treasure', 'img/treasure.png')
     game.load.image('divit', 'img/divit1.png')
     game.load.image('ruby', 'img/ruby.png')
+    game.load.image('titleScreen', 'img/titleScreen3.png')
 
   load: () ->
 

@@ -3,8 +3,7 @@ TitleScreenState =
   load: () ->
   create: () ->
     game.add.sprite(0, 0, 'background')
-    game.add.sprite(0, waterHeight, 'water')
-    game.add.sprite(470, 612, 'captain')
+    game.add.sprite(0, 0, 'titleScreen')
 
     @startButton = new Phaser.Button(game, 128, 416, 'big_button', @onStartPress, @, 0, 0, 1, 0)
     @startButton.tint = 0xFF5555
@@ -26,7 +25,7 @@ TitleScreenState =
   update: () ->
 
   render: () ->
-    game.debug.text("title here", 200, 200)
+    # game.debug.text("title here", 200, 200)
 
   onStartPress: () ->
     game.state.start('Gameplay')
