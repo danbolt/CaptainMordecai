@@ -101,13 +101,24 @@ Levels[9] = [
 
 # Boat!
 Levels[10] = [
-  [0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ],
+  [0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , {treasure: true}, {treasure: true}, {treasure: true}, 0 , 0 , 0 ],
   [{color: 0xB3753E}, {color: 0xB3753E}, {color: 0xB3753E}, {color: 0xB3753E}, {color: 0xB3753E}, {color: 0xB3753E}, {color: 0xB3753E}, {color: 0xB3753E}, {color: 0xB3753E}, {color: 0xB3753E}, {color: 0xB3753E}, {color: 0xB3753E}, {color: 0xB3753E}, {color: 0xB3753E}, {color: 0xB3753E}, {color: 0x82562F}],
   [{color: 0xB3753E}, {color: 0xB3753E}, {color: 0xB3753E}, {color: 0xB3753E}, {color: 0xB3753E}, {color: 0xB3753E}, {color: 0xB3753E}, {color: 0xB3753E}, {color: 0xB3753E}, {color: 0xB3753E}, {color: 0xB3753E}, {color: 0xB3753E}, {color: 0xB3753E}, {color: 0xB3753E}, {color: 0xB3753E}, {color: 0x82562F}],
   [0 , {color: 0xB3753E}, {color: 0xB3753E}, {color: 0x4F4F4F}, {color: 0x4F4F4F}, {color: 0xB3753E}, {color: 0xB3753E}, {color: 0x4F4F4F}, {color: 0x4F4F4F}, {color: 0xB3753E}, {color: 0xB3753E}, {color: 0x4F4F4F}, {color: 0x4F4F4F}, {color: 0xB3753E}, {color: 0x82562F}, 0 ],
   [0 , {color: 0xB3753E}, {color: 0xB3753E}, {color: 0x4F4F4F}, {color: 0x4F4F4F}, {color: 0xB3753E}, {color: 0xB3753E}, {color: 0x4F4F4F}, {color: 0x4F4F4F}, {color: 0xB3753E}, {color: 0xB3753E}, {color: 0x4F4F4F}, {color: 0x4F4F4F}, {color: 0xB3753E}, {color: 0x82562F}, 0 ],
-  [0 , 0 , {color: 0xB3753E}, {color: 0xB3753E}, {color: 0xB3753E}, {color: 0xB3753E}, {color: 0xB3753E}, {color: 0xB3753E}, {color: 0xB3753E}, {color: 0xB3753E}, {color: 0xB3753E}, {color: 0xB3753E}, {color: 0xB3753E}, {color: 0x82562F}, 0 , 0 ],
+  [0 , 0 , {color: 0xB3753E}, {treasure: true}, {treasure: true}, {color: 0xB3753E}, {color: 0xB3753E}, {treasure: true}, {treasure: true}, {color: 0xB3753E}, {color: 0xB3753E}, {treasure: true}, {treasure: true}, {color: 0x82562F}, 0 , 0 ],
   [0 , 0 , {color: 0xB3753E}, {color: 0xB3753E}, {color: 0xB3753E}, {color: 0xB3753E}, {color: 0xB3753E}, {color: 0xB3753E}, {color: 0xB3753E}, {color: 0xB3753E}, {color: 0xB3753E}, {color: 0xB3753E}, {color: 0xB3753E}, {color: 0x82562F}, 0 , 0 ]
+]
+
+# The Sea
+Levels[11] = [
+  [0 , 0 , 0 , 0 , {color: 0x6DCCFC}, {color: 0x6DCCFC}, {color: 0x9CE9FF}, 0 , 0 , 0 , 0 , {color: 0x6DCCFC}, {color: 0x6DCCFC}, {color: 0x9CE9FF}, 0 , 0 ],
+  [0 , 0 , 0 , 0 , {color: 0x6DCCFC}, 0 , {color: 0x6DCCFC}, {color: 0x9CE9FF}, 0 , 0 , 0 , {color: 0x6DCCFC}, 0 , {color: 0x6DCCFC}, {color: 0x9CE9FF}, 0 ],
+  [0 , 0 , 0 , 0 , 0 , 0 , {color: 0x6DCCFC}, {color: 0x9CE9FF}, 0 , 0 , 0 , 0 , 0 , {color: 0x6DCCFC}, {color: 0x9CE9FF}, 0 ],
+  [0 , 0 , 0 , 0 , {color: 0x6DCCFC}, {color: 0x6DCCFC}, {color: 0x6DCCFC}, {color: 0x9CE9FF}, 0 , 0 , 0 , 0 , {color: 0x6DCCFC}, {color: 0x6DCCFC}, {color: 0x9CE9FF}, 0 ],
+  [0 , 0 , {color: 0x6DCCFC}, {color: 0x6DCCFC}, {color: 0x6DCCFC}, {color: 0x6DCCFC}, {color: 0x6DCCFC}, {color: 0x6DCCFC}, {color: 0x9CE9FF}, {color: 0x6DCCFC}, {color: 0x6DCCFC}, {color: 0x6DCCFC}, {color: 0x6DCCFC}, {color: 0x6DCCFC}, {color: 0x6DCCFC}, {color: 0x9CE9FF}],
+  [{color: 0x6DCCFC}, {color: 0x6DCCFC}, {color: 0x6DCCFC}, {color: 0x6DCCFC}, {color: 0x6DCCFC}, {color: 0x6DCCFC}, {color: 0x6DCCFC}, {color: 0x6DCCFC}, {color: 0x9CE9FF}, {color: 0x6DCCFC}, {color: 0x6DCCFC}, {color: 0x6DCCFC}, {color: 0x6DCCFC}, {color: 0x6DCCFC}, {color: 0x6DCCFC}, {color: 0x9CE9FF}],
+  [{color: 0x6DCCFC}, {color: 0x6DCCFC}, {color: 0x6DCCFC}, {color: 0x6DCCFC}, {color: 0x6DCCFC}, {color: 0x6DCCFC}, {color: 0x6DCCFC}, {color: 0x9CE9FF}, {color: 0x6DCCFC}, {color: 0x6DCCFC}, {color: 0x6DCCFC}, {color: 0x6DCCFC}, {color: 0x6DCCFC}, {color: 0x6DCCFC}, {color: 0x9CE9FF}, 0 ]
 ]
 
 # Template

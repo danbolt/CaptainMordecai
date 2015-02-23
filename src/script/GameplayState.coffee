@@ -10,8 +10,8 @@ score = 0
 lives = 3
 startingLives = 3
 currentLevel = 1
-furthestUnlockedLevel = 10
-numberOfLevels = 10
+furthestUnlockedLevel = 1
+numberOfLevels = 11
 rubyVelocity = 200
 
 waterHeight = 748
