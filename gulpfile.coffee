@@ -43,6 +43,7 @@ gulp.task 'img', ->
 # Copy html files
 gulp.task 'html', ->
   gulp.src(htmlSrc).pipe(minifyHTML()).pipe gulp.dest(htmlDst)
+  gulp.src('./src/favicon/*').pipe gulp.dest('./build')
   return
 
 # Build stylesheet files

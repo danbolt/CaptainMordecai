@@ -14,7 +14,7 @@ LevelSelectState =
     @titleText = game.add.text(GameResolution.width / 2, 100, 'LEVEL SELECT', { font: '72px Karla', fill: 'white', align: 'center'})
     @titleText.anchor.set(0.5)
 
-    for i in [1..12] by 1
+    for i in [1..numberOfLevels] by 1
       levelButton = new Phaser.Button(game, 16 + (208 * ((i-1) % 3)), 224 + 128 * Math.floor((i-1)/3), 'small_button', @levelButtonPress, @, 0, 0, 1, 0)
       levelButton.scale.x = levelButton.scale.y = 0.75
       levelButton.index = i

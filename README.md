@@ -1,7 +1,13 @@
-# MunroSavageWeekend
+# From the Journal of Captain Mordecai
 
 ## About
-Connor and Daniel's lovely little game!
+From the Journal of Captain Mordecai is a game about defeating blocks, and
+coming to terms with your one true love: the sea.
+
+## How to Play
+You can build the game yourself at the moment. We hope to have it hosted up on GitHub pages soon.
+
+You can play this game in a web browser, or even your smartphone!
 
 ## Requirements
 - Node.js
@@ -13,5 +19,5 @@ Connor and Daniel's lovely little game!
 2. Start Gulp by running `npm start`. That should build the game, and rebuild when you save changes.
 3. Run a web server pointing at the `build` directory. That will let you run the game in a web browser.
 
-## Something didn't work or I have a question or I need some help and things are kinda strange
-Bug Daniel!
+## I have a question! Something broke!
+Feel free to email Daniel or Connor.

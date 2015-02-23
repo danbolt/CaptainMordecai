@@ -10,7 +10,8 @@ score = 0
 lives = 3
 startingLives = 3
 currentLevel = 1
-furthestUnlockedLevel = 12
+furthestUnlockedLevel = 1
+numberOfLevels = 11
 rubyVelocity = 200
 
 waterHeight = 748
@@ -23,6 +24,8 @@ GameplayState =
   create: () ->
     game.physics.startSystem(Phaser.Physics.ARCADE)
     game.input.maxPointers = 1
+
+    @youWinSprite = null
 
     game.add.sprite(0, 0, 'background')
     @water = game.add.sprite(0, waterHeight, 'water')
@@ -79,6 +82,20 @@ GameplayState =
     @ball.body.velocity.x = 0
     @ball.body.velocity.y = -400
 
+    for i in [0..3]
+      fish = new Phaser.Sprite(game, (if i % 2 == 0 then ((Math.random() * -800) - 100) else GameResolution.width + (Math.random() * 800) + 100), waterHeight + 32 * (i + 1.5), 'fish', 0)
+      game.physics.enable(fish, Phaser.Physics.ARCADE)
+      fish.body.velocity.x = (if i % 2 == 0 then 20 else -20) + (Math.random() * 10) - 5
+      fish.scale.x = (if i % 2 == 0 then 1 else -1)
+      fish.animations.add('swim', null, 4, true)
+      fish.animations.play('swim')
+      fish.update = () ->
+        if @.body.position.x < -1000
+          @.body.position.x = GameResolution.width + (Math.random() * 800) + 100
+        else if @.body.position.x > GameResolution.width + 1000
+          @.body.position.x =  -(Math.random() * 800) - 100
+      game.add.existing(fish)
+
     @boxes = new Phaser.Group(game, undefined, 'boxes')
     for i in [0..15] by 1
       for j in [0..6] by 1
@@ -125,6 +142,9 @@ GameplayState =
       if (game.input.activePointer.justPressed(500))
         @waitingToStart = false
         @waitingToStartText.visible = false
+
+    if @youWinSprite and game.input.activePointer.justPressed(500)
+      game.state.start('TitleScreen')
 
     game.physics.arcade.overlap(@ball, @square, (ball, paddle) ->
       ball.body.velocity.x = 400 * Math.cos(Math.PI + (Math.PI / 4) + ((Math.PI / 2) * (ball.body.center.x - paddle.body.position.x) / paddle.body.width))
@@ -179,10 +199,19 @@ GameplayState =
 
     # If the player finishes all the blocks,
     # start the next level for him.
-    if @boxes.countLiving() <= 0
-      currentLevel = Math.max(Math.min(12, currentLevel + 1), 1)
-      furthestUnlockedLevel = currentLevel
-      game.state.start('Gameplay')
+    if @boxes.countLiving() <= 0 && !@youWinSprite
+      currentLevel = Math.max(currentLevel + 1, 1)
+      furthestUnlockedLevel = Math.max(currentLevel, furthestUnlockedLevel)
+      if currentLevel > numberOfLevels
+        currentLevel = 1
+        @youWinSprite = game.add.sprite(GameResolution.width / 2, GameResolution.height / 2, 'youwin', 0)
+        @youWinSprite.animations.add('flash', null, 7, true)
+        @youWinSprite.animations.play('flash')
+        @youWinSprite.anchor.set(0.5)
+        @ball.body.velocity.x = 0
+        @ball.body.velocity.y = 0
+      else
+        game.state.start('Gameplay')
 
 
   render: () ->
