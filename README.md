@@ -5,9 +5,11 @@ From the Journal of Captain Mordecai is a game about defeating blocks, and
 coming to terms with your one true love: the sea.
 
 ## How to Play
-You can build the game yourself at the moment. We hope to have it hosted up on GitHub pages soon.
+You can play the game in a modern web browser, such as Safari or Chrome. You can control and play the game with a mobile phone, too.
 
-You can play this game in a web browser, or even your smartphone!
+At the current time, the game doesn't save the user's levels they've unlocked, so if you close the page you'll lose your progress. We're open to pull requests if anyone's interested!
+
+We have it hosted [here](http://danbolt.github.io/CaptainMordecai/), or you can build the game yourself.
 
 ## Requirements
 - Node.js
